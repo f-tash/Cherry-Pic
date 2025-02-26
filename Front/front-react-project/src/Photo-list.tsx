@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Container, Box, Grid2 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { Container, Box, Grid2, Button } from "@mui/material";
 
 // 写真情報の型定義
 type PhotoInfo = {
@@ -37,6 +38,7 @@ const PhotoList: React.FC = () => {
                         }
                     </Grid2>
                 </Container>
+                <PostLinkButton />
             </Box>
         </>
     );
@@ -53,5 +55,24 @@ const PhotoCard: React.FC<PhotoInfo> = (props) => {
         </>
     );
 };
+
+// 投稿ページへのリンクボタン
+const PostLinkButton: React.FC = () => {
+    const navigate = useNavigate();
+    const handleClick = () => {
+        navigate("/");
+    }
+
+    return (
+        <>
+            <Button onClick={handleClick} sx={{
+                textAlign: "center", position: "fixed", bottom: "50px", right: "50px", borderRadius: "50%", backgroundColor: "#FF75B6", color: "white",
+                width: "56px", height: "56px", opacity: 0.5, "&:hover": { opacity: 1 }
+            }}>
+                ＋
+            </Button>
+        </>
+    );
+}
 
 export default PhotoList;
