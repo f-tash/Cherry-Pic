@@ -2,7 +2,7 @@ from urllib.parse import urlparse
 
 
 def validate_post_dreams(data):
-    # 必須キーの存在確認
+    # 夢のタイトルと画像URLが含まれているか確認
     if "dream" not in data or "img_url" not in data:
         return False
 
