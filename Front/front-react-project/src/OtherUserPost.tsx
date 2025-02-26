@@ -8,21 +8,27 @@ type OtherUserPostProps = {
 
 const InputDreamPage: React.FC<OtherUserPostProps> = ({ dream }) => {
   return (
-    <Box position={"relative"}>
-      <img src="./sakura.png" />
+    <Box position={"relative"} display="inline-block">
+      <img
+        src="./sakura.png"
+        alt="他人の投稿の桜画像"
+        width={180}
+        height={180}
+      />
       <Typography
-        fontSize={14}
+        fontSize={dream.length > 30 ? 10 : 14}
         position={"absolute"}
-        top={70}
-        left={40}
+        top={dream.length > 24 ? "55%" : "50%"}
+        left="50%"
         color="white"
-        //MEMO: 適切な長さで改行を行う
         maxWidth={100}
         sx={{
           fontFamily: "Zen Kurenaido",
           fontWeight: 400,
           fontStyle: "normal",
           wordWrap: "break-word",
+          transform: "translate(-50%, -50%)", // これで中央に配置
+          textAlign: "center", // 中央揃え
         }}
       >
         {dream}
