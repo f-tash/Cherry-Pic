@@ -2,19 +2,32 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Container, Box, Grid2, Button } from "@mui/material";
 
-// 写真情報の型定義
-type PhotoInfo = {
-    id: number; // 画像のID
-    title: string; // 画像のタイトル
-    url: string; // 画像のURL
-};
+
+import PhotDialog from "./Photo-dialog.tsx"; // ダイアログのコンポーネントをインポート
+import { PhotoInfo } from "./Photo-list-type"; // 写真情報の型定義をインポート
+import { PhotoDialogProps } from "./Photo-list-type"; // ダイアログのプロップスの型定義をインポート
 
 const PhotoList: React.FC = () => {
-    const [photosInfo, setPhotosInfo] = useState<PhotoInfo[]>([]); // 写真情報
+    const [photosInfoList, setPhotosInfoList] = useState<PhotoInfo[]>([]); // 写真情報
+    const [isDialog, setIsDialog] = useState<boolean>(false); // ダイアログの表示状態
+
+    // ダイアログの表示状態を変更
+    const closeDialog = () => {
+        setIsDialog(false);
+    }
+
+    // ダイアログのプロップス
+    const [dialogProps, setDialogProps] = useState<PhotoDialogProps>({
+        id: 0,
+        title: "",
+        url: "",
+        closeDialog: closeDialog,
+        isDialog: isDialog
+    });
 
     // 初回レンダリング時のみ実行
     useEffect(() => {
-        setPhotosInfo([
+        setPhotosInfoList([
             { id: 1, title: "photo1", url: "https://via.placeholder.com/150" },
             { id: 2, title: "photo2", url: "https://via.placeholder.com/150" },
             { id: 3, title: "photo3", url: "https://via.placeholder.com/150" },
@@ -22,23 +35,43 @@ const PhotoList: React.FC = () => {
             { id: 5, title: "photo5", url: "https://via.placeholder.com/150" },
         ]); // 仮の写真情報をセット
 
+
     }, []);
+
+    // 詳細情報のダイアログを開く
+    const handleOpenDialog = (photoInfo: PhotoInfo) => {
+        setDialogProps({
+            id: photoInfo.id,
+            title: photoInfo.title,
+            url: photoInfo.url,
+            closeDialog: closeDialog,
+            isDialog: true
+        });
+        setIsDialog(true);
+    };
+
+
 
     return (
         <>
             <Box>
-                <Container sx={{ alignItems: "center" }}>
+                <Container sx={{ alignItems: "center", mt: "5px" }}>
                     <Grid2 container spacing={3} >
                         {
-                            photosInfo.map((photo) => (
+                            // 写真情報を元に写真カードを繰り返しで生成
+                            photosInfoList.map((photo) => (
+
                                 <Grid2 key={photo.id} size={3}>
-                                    <PhotoCard {...photo} />
+                                    <div onClick={() => handleOpenDialog(photo)}>
+                                        <PhotoCard {...photo} />
+                                    </div>
                                 </Grid2>
                             ))
                         }
                     </Grid2>
                 </Container>
                 <PostLinkButton />
+                <PhotDialog {...dialogProps} isDialog={isDialog}></PhotDialog>
             </Box>
         </>
     );
