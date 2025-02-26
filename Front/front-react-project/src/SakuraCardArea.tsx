@@ -1,37 +1,45 @@
 import React from "react";
-import { Grid, Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import OtherUserPost from "./OtherUserPost.tsx";
+import InputSakuraCardItem from "./InputSakuraCardItem.tsx";
 
 const SakuraCardArea = () => {
   const dreams = [
-    { gridColumn: 1, gridRow: 1, dream: "大富豪になる！" },
-    { gridColumn: 2, gridRow: 1, dream: "世界一周する！" },
-    { gridColumn: 3, gridRow: 1, dream: "プログラマーになる！" },
+    { gridColumn: 2, gridRow: 1, dream: "大富豪になる！" },
+    { gridColumn: 3, gridRow: 1, dream: "世界一周する！" },
+    { gridColumn: 4, gridRow: 1, dream: "プログラマーになる！" },
     {
       gridColumn: 1,
       gridRow: 2,
       dream: "お客さんも自分も笑顔に幸せにできるヘアメイクさんになる!!",
     },
     {
-      gridColumn: 3,
+      gridColumn: 2,
       gridRow: 2,
       dream:
         "人生楽しくやりたいことをやって自分で幸せになれるように頑張ります。カラーが得意な美容師さんを目指します。",
     },
-    { gridColumn: 1, gridRow: 3, dream: "b" },
-    { gridColumn: 2, gridRow: 3, dream: "c" },
-    { gridColumn: 3, gridRow: 3, dream: "d" },
+    { gridColumn: 4, gridRow: 2, dream: "幸せになる" },
+    { gridColumn: 5, gridRow: 2, dream: "お店を出す" },
+    { gridColumn: 2, gridRow: 3, dream: "留学して英語をマスターする" },
+    {
+      gridColumn: 3,
+      gridRow: 3,
+      dream: "フロントもバックもできるフルスタックなエンジニアになる！",
+    },
+    { gridColumn: 4, gridRow: 3, dream: "洋服をたくさん買う" },
   ];
+
   return (
     <Box
       sx={{
         display: "grid",
-        gridTemplateColumns: "repeat(3, 1fr)",
+        gridTemplateColumns: "repeat(5, 1fr)",
         gridTemplateRows: "repeat(3, 1fr)",
         position: "relative",
       }}
     >
-      {/* 周りの8要素 */}
+      {/* 周りの要素 */}
       {dreams.map((dream, index) => (
         <Box
           key={index}
@@ -47,14 +55,18 @@ const SakuraCardArea = () => {
       {/* 中央の要素 */}
       <Box
         sx={{
-          gridColumn: 2,
+          gridColumn: 3,
           gridRow: 2,
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          flexDirection: "column",
         }}
       >
-        <img src="./sakura.png" />
+        <Typography my={-2} zIndex={2}>
+          あなたの「夢」は？
+        </Typography>
+        <InputSakuraCardItem />
       </Box>
     </Box>
   );
