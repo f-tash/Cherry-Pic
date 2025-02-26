@@ -1,14 +1,14 @@
 import React from "react";
-import Button from "@mui/material/Button";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./Home.tsx";
 
 function App() {
   return (
-    <div>
-      <h1>Hello MUI!</h1>
-      <Button variant="contained" color="primary">
-        MUIのボタン
-      </Button>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </Router>
   );
 }
 
