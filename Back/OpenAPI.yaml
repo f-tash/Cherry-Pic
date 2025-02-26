@@ -1,0 +1,59 @@
+openapi: 3.0.0
+info:
+  title: Cherry Pic API
+  description: This is the Cherry Pic API documentation.
+  version: 0.1.9
+
+servers:
+  - url: http://api.example.com/v1
+    description: Optional server description, e.g. Main (production) server
+  - url: http://staging-api.example.com
+    description: Optional server description, e.g. Internal staging server for testing
+
+paths:
+  /dreams:
+    get:
+      summary: Returns a list of dreams.
+      responses:
+        "200": 
+          description: A JSON array of dreams
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    dream_id:
+                      type: string
+                      description: Dream ID
+                    dream_title:
+                      type: string
+                      description: Dream Title
+                    url:
+                      type: string
+                      format: img_uri
+                      description: Dream Image URL
+    post:
+      summary: Add a new dream.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                dream_title:
+                  type: string
+                  description: Dream Title
+                url:
+                  type: string
+                  format: img_uri
+                  description: Dream Image URL
+      responses:
+        "201":
+          description: Dream created successfully
+        "400":
+          description: Invalid input, object invalid
+        "409":
+          description: An existing dream already exists
