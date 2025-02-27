@@ -57,3 +57,20 @@ paths:
           description: Invalid input, object invalid
         "409":
           description: An existing dream already exists
+    update:
+      summary: Update an existing dream to submit.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                dream_id:
+                  type: string
+                  description: Dream ID
+      responses:
+        "200":
+          description: Dream updated successfully
+        "404":
+          description: Dream not found

@@ -23,3 +23,9 @@ def validate_post_dreams(data):
         return False
 
     return True
+
+
+def validate_update_dreams(data):
+    #idが含まれているかの確認
+
+    return True 

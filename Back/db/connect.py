@@ -1,4 +1,4 @@
-from supabase_client import get_supabase_client
+from db.supabase_client import get_supabase_client
 
 import os
 from dotenv import load_dotenv
@@ -66,9 +66,22 @@ def get_dreams(amount:int=10) -> list:
     response = (
         supabase.table(table_name)
         .select("*")
+        .eq("submitted", True)
         .order("created_at", desc=True)
         .limit(amount) # 最新10件
         .execute()
     )
 
     return response.model_dump()["data"]
+
+def submit_dream(id):
+    """
+    Submit a dream to the Supabase database.
+    
+    Args:
+        id (int): The id of the dream.
+    Returns:
+        None
+    """
+    supabase=get_supabase_client()
+    response = supabase.table(table_name).update({"submitted": True}).eq("id", id).execute()
