@@ -1,4 +1,4 @@
-from supabase_client import get_supabase_client
+from db.supabase_client import get_supabase_client
 
 import os
 from dotenv import load_dotenv
