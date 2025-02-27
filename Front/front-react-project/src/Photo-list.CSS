@@ -15,8 +15,8 @@
 }
 
 .photo-dialog-img {
-    width: 350px;
-    height: 350px;
+    width: 300px;
+    height: 300px;
     border-radius: 5%;
     background-color: blue;
 }
