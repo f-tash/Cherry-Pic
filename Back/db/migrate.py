@@ -17,8 +17,8 @@ Base = declarative_base()
 class Dream(Base):
     __tablename__ = tabel_name
     
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    title = Column(String(255), nullable=False)
+    dream_id = Column(Integer, primary_key=True, autoincrement=True)
+    dream_title = Column(String(255), nullable=False)
     url = Column(String(500), nullable=False, default="https://example.com")
     created_at = Column(DateTime, server_default=func.now())  
     submitted = Column(Boolean, server_default='false')
