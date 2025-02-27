@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 
 
-from api.dreams import get_dreams_from_db
+from api.dreams import get_dreams_from_db, post_dreams_to_db
 from api.validation import validate_post_dreams
 
 
@@ -16,7 +16,8 @@ def home():
 
 @app.route("/dreams", methods=["GET"])
 def get_dreams():
-    response = get_dreams_from_db()
+    limit = request.args.get("limit", 10)
+    response = get_dreams_from_db(limit=limit)
     return jsonify(response)
 
 
@@ -28,9 +29,9 @@ def post_dream():
         return jsonify({"error": "Bad Request"}), 400
     dream_title = data["dream_title"]
 
-    response = {"message": "dream created successfully", "id": 123, "status": "success"}
+    img_url=post_dreams_to_db(dream_title)
 
-    return jsonify(response)
+    return jsonify(response={"url": img_url})
 
 
 if __name__ == "__main__":
