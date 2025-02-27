@@ -4,6 +4,11 @@ from openai import OpenAI
 import tempfile
 import base64
 
+
+from api.dreams import get_dreams_from_db
+from api.validation import validate_post_dreams
+
+
 # インスタンス化とAPIキーの設定
 client = OpenAI()
 client.api_key = os.getenv("OPENAI_API_KEY")
@@ -34,6 +39,25 @@ def image_generation(title):
 @app.route("/")
 def home():
     return render_template("home.html")
+
+
+@app.route("/dreams", methods=["GET"])
+def get_dreams():
+    response = get_dreams_from_db()
+    return jsonify(response)
+
+
+@app.route("/dreams", methods=["POST"])
+def post_dream():
+    data = request.json
+    is_request_ok = validate_post_dreams(data)
+    if not is_request_ok:
+        return jsonify({"error": "Bad Request"}), 400
+    dream_title = data["dream_title"]
+
+    response = {"message": "dream created successfully", "id": 123, "status": "success"}
+
+    return jsonify(response)
 
 
 if __name__ == "__main__":
