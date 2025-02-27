@@ -17,6 +17,7 @@ const GeneratePictureModal: React.FC<GeneratePictureModalProps> = ({
 }) => {
   const [open, setOpen] = useState(false);
   const [url, setUrl] = useState("");
+  const [dreamId, setDreamId] = useState<number | null>(null);
   const endpoint = "https://cherry-pic.onrender.com/dreams"; // APIのエンドポイント
   const [loading, setLoading] = useState(false); // ローディング状態管理
   const schema = z
@@ -33,6 +34,7 @@ const GeneratePictureModal: React.FC<GeneratePictureModalProps> = ({
       setError(""); // エラーなし
       try {
         setLoading(true); // ローディング開始
+        //MEMO:他人の夢を取得
         const response = await fetch(endpoint, {
           method: "POST",
           headers: {
@@ -49,14 +51,37 @@ const GeneratePictureModal: React.FC<GeneratePictureModalProps> = ({
 
         const result = await response.json();
         console.log("成功:", result);
-        console.log("url", result.response.url);
-        setUrl(result.response.url);
+        setUrl(result.response.url); //urlを取得
+        setDreamId(result.response.dream_id); //idを取得
         setOpen(true);
       } catch (error) {
         console.error("エラー:", error);
       } finally {
         setLoading(false); // ローディング終了
       }
+    }
+  };
+  const handleUpdate = async () => {
+    console.log("dreamId:", dreamId);
+    const response = await fetch(endpoint, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        dream_id: dreamId,
+        submit: true,
+      }),
+    });
+
+    if (response.ok) {
+      const result = await response.json();
+      console.log("部分更新成功:", result);
+      navigate("/photo-list");
+    } else {
+      console.error("更新失敗:", response.status);
+      const errorDetails = await response.json(); // 詳細なエラーメッセージを確認
+      console.error("エラー詳細:", errorDetails);
     }
   };
   const handleClose = () => setOpen(false);
@@ -134,7 +159,7 @@ const GeneratePictureModal: React.FC<GeneratePictureModalProps> = ({
               </Typography>
               <Button
                 variant="contained"
-                onClick={() => navigate("/photo-list")}
+                onClick={handleUpdate}
                 sx={{
                   bgcolor: "#FF75B6",
                   color: "white",
