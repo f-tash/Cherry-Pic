@@ -6,7 +6,7 @@ import InputDreamPage from "./page/InputDreamPage.tsx";
 
 function App() {
   return (
-    <Router basename={process.env.PUBLIC_URL}>
+    <Router basename="/Cherry-Pic">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/photo-list" element={<PhotoList />} />
