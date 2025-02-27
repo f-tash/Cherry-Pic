@@ -1,4 +1,5 @@
 import { Box, Button, Modal, Typography } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 import { z } from "zod";
 import React from "react";
 import { useNavigate } from "react-router-dom";
@@ -61,12 +62,32 @@ const GeneratePictureModal: React.FC<GeneratePictureModalProps> = ({
           position="absolute"
           top="50%"
           left="50%"
-          width={400}
+          margin={"auto"}
+          width={{ xs: "85%", md: 400 }}
+          maxWidth={400}
           bgcolor="background.paper"
           boxShadow={24}
           py={7}
           sx={{ transform: "translate(-50%, -50%)" }}
         >
+          <Button
+            onClick={handleClose}
+            disableRipple
+            sx={{
+              borderRadius: "50%",
+              width: "48px",
+              height: "48px",
+              padding: "0",
+              minWidth: "0",
+              position: "absolute",
+              top: -20,
+              left: -20,
+              zIndex: 2,
+              bgcolor: "#FF75B6",
+            }}
+          >
+            <CloseIcon sx={{ color: "white" }}></CloseIcon>
+          </Button>
           <Typography>画像が生成されました！</Typography>
           <img
             src="./ai-picture.png"

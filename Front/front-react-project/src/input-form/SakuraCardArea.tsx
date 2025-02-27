@@ -1,49 +1,66 @@
 import React, { useEffect, useState } from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useMediaQuery } from "@mui/material";
 import OtherUserPost from "./OtherUserSakuraCard.tsx";
 import InputSakuraCardItem from "./InputSakuraCardItem.tsx";
-import { PhotoInfo } from "../Photo-list-type.ts";
+import { PhotoInfo } from "../photo-list/Photo-list-type";
 
 const SakuraCardArea = ({ value, setValue }) => {
   const [photosInfoList, setPhotosInfoList] = useState<PhotoInfo[]>([]);
+  const isMobile = useMediaQuery("(max-width:600px)");
 
   useEffect(() => {
     setPhotosInfoList([
-      { id: 1, title: "大富豪になる", url: "./ai-picture.png" },
       {
-        id: 2,
-        title: "野球選手になりたい",
+        dream_id: 1,
+        dream_title: "大富豪になる",
         url: "./ai-picture.png",
       },
       {
-        id: 3,
-        title: "仮面ライダーになる",
+        dream_id: 2,
+        dream_title: "野球選手になりたい",
         url: "./ai-picture.png",
       },
       {
-        id: 4,
-        title: "世界一周旅行クルーズ",
+        dream_id: 3,
+        dream_title: "仮面ライダーになる",
+        url: "./ai-picture.png",
+      },
+      {
+        dream_id: 4,
+        dream_title: "世界一周旅行クルーズ",
         url: "https://via.placeholder.com/150",
       },
       {
-        id: 5,
-        title: "お客さんも自分も笑顔に幸せにできるヘアメイクさんになる!!",
-        url: "https://via.placeholder.com/150",
-      },
-      { id: 6, title: "カフェを開く", url: "https://via.placeholder.com/150" },
-      { id: 7, title: "猫カフェ巡り", url: "https://via.placeholder.com/150" },
-      {
-        id: 8,
-        title: "スポーツカーを買う",
+        dream_id: 5,
+        dream_title: "お客さんも自分も笑顔に幸せにできるヘアメイクさんになる!!",
         url: "https://via.placeholder.com/150",
       },
       {
-        id: 9,
-        title:
+        dream_id: 6,
+        dream_title: "カフェを開く",
+        url: "https://via.placeholder.com/150",
+      },
+      {
+        dream_id: 7,
+        dream_title: "猫カフェ巡り",
+        url: "https://via.placeholder.com/150",
+      },
+      {
+        dream_id: 8,
+        dream_title: "スポーツカーを買う",
+        url: "https://via.placeholder.com/150",
+      },
+      {
+        dream_id: 9,
+        dream_title:
           "人生楽しくやりたいことをやって自分で幸せになれるように頑張ります。カラーが得意な美容師さんを目指します。",
         url: "https://via.placeholder.com/150",
       },
-      { id: 10, title: "ゲームを作る", url: "https://via.placeholder.com/150" },
+      {
+        dream_id: 10,
+        dream_title: "ゲームを作る",
+        url: "https://via.placeholder.com/150",
+      },
     ]);
     // 仮の写真情報をセット
   }, []);
@@ -55,62 +72,62 @@ const SakuraCardArea = ({ value, setValue }) => {
     {
       gridColumn: 2,
       gridRow: 1,
-      dream: photosInfoList[0].title,
-      dreamImageUrl: photosInfoList[0].url,
+      dream: photosInfoList[0].dream_title,
+      dreamImage: photosInfoList[0].url,
     },
     {
       gridColumn: 3,
       gridRow: 1,
-      dream: photosInfoList[1].title,
-      dreamImageUrl: photosInfoList[1].url,
+      dream: photosInfoList[1].dream_title,
+      dreamImage: photosInfoList[1].url,
     },
     {
       gridColumn: 4,
       gridRow: 1,
-      dream: photosInfoList[2].title,
-      dreamImageUrl: photosInfoList[2].url,
+      dream: photosInfoList[2].dream_title,
+      dreamImage: photosInfoList[2].url,
     },
     {
       gridColumn: 1,
       gridRow: 2,
-      dream: photosInfoList[3].title,
-      dreamImageUrl: photosInfoList[3].url,
+      dream: photosInfoList[3].dream_title,
+      dreamImage: photosInfoList[3].url,
     },
     {
       gridColumn: 2,
       gridRow: 2,
-      dream: photosInfoList[4].title,
-      dreamImageUrl: photosInfoList[4].url,
+      dream: photosInfoList[4].dream_title,
+      dreamImage: photosInfoList[4].url,
     },
     {
       gridColumn: 4,
       gridRow: 2,
-      dream: photosInfoList[5].title,
-      dreamImageUrl: photosInfoList[5].url,
+      dream: photosInfoList[5].dream_title,
+      dreamImage: photosInfoList[5].url,
     },
     {
       gridColumn: 5,
       gridRow: 2,
-      dream: photosInfoList[6].title,
-      dreamImageUrl: photosInfoList[6].url,
+      dream: photosInfoList[6].dream_title,
+      dreamImage: photosInfoList[6].url,
     },
     {
       gridColumn: 2,
       gridRow: 3,
-      dream: photosInfoList[7].title,
-      dreamImageUrl: photosInfoList[7].url,
+      dream: photosInfoList[7].dream_title,
+      dreamImage: photosInfoList[7].url,
     },
     {
       gridColumn: 3,
       gridRow: 3,
-      dream: photosInfoList[8].title,
-      dreamImageUrl: photosInfoList[8].url,
+      dream: photosInfoList[8].dream_title,
+      dreamImage: photosInfoList[8].url,
     },
     {
       gridColumn: 4,
       gridRow: 3,
-      dream: photosInfoList[9].title,
-      dreamImageUrl: photosInfoList[9].url,
+      dream: photosInfoList[9].dream_title,
+      dreamImage: photosInfoList[9].url,
     },
   ];
 
@@ -122,21 +139,41 @@ const SakuraCardArea = ({ value, setValue }) => {
         gridTemplateRows: "repeat(3, 1fr)",
         position: "relative",
       }}
+      px={isMobile ? 10 : 0}
     >
       {/* 周りの要素 */}
       {dreams.map((dream, index) => (
-        <Box
-          key={index}
-          sx={{
-            gridColumn: dream.gridColumn,
-            gridRow: dream.gridRow,
-          }}
-        >
-          <OtherUserPost
-            dreamTitle={dream.dream}
-            dreamImage={dream.dreamImageUrl}
-          />
-        </Box>
+        <React.Fragment key={index}>
+          {!isMobile ? (
+            <Box
+              sx={{
+                gridColumn: dream.gridColumn,
+                gridRow: dream.gridRow,
+              }}
+            >
+              <OtherUserPost
+                dreamTitle={dream.dream}
+                dreamImage={dream.dreamImage}
+              />
+            </Box>
+          ) : (
+            dream.gridColumn !== 3 &&
+            dream.gridRow !== 2 && (
+              <Box
+                mx={-10}
+                sx={{
+                  gridColumn: dream.gridColumn,
+                  gridRow: dream.gridRow,
+                }}
+              >
+                <OtherUserPost
+                  dreamTitle={dream.dream}
+                  dreamImage={dream.dreamImage}
+                />
+              </Box>
+            )
+          )}
+        </React.Fragment>
       ))}
 
       {/* 中央の要素 */}
