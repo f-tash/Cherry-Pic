@@ -20,11 +20,14 @@ const InputDreamPage: React.FC<OtherUserPostProps> = ({
       onMouseLeave={() => setHover(false)}
       sx={{ overflow: "hidden", cursor: "pointer" }}
     >
-      <img
+      <Box
+        component="img"
         src="./sakura.png"
         alt="他人の投稿の桜画像"
-        width={180}
-        height={180}
+        sx={{
+          width: 180,
+          height: 180,
+        }}
       />
       <Typography
         fontSize={dreamTitle.length > 30 ? 10 : 14}
