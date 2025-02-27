@@ -157,6 +157,7 @@ const SakuraCardArea = ({ value, setValue }) => {
         <Typography my={-2} zIndex={2}>
           あなたの「夢」は？
         </Typography>
+        {/* 入力フォーム */}
         <InputSakuraCardItem value={value} setValue={setValue} />
       </Box>
     </Box>
