@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Box, Typography, useMediaQuery } from "@mui/material";
 import OtherUserPost from "./OtherUserSakuraCard.tsx";
 import InputSakuraCardItem from "./InputSakuraCardItem.tsx";
-import { PhotoInfo } from "../Photo-list-type.ts";
+import { PhotoInfo } from "../photo-list/Photo-list-type";
 
 const SakuraCardArea = ({ value, setValue }) => {
   const [photosInfoList, setPhotosInfoList] = useState<PhotoInfo[]>([]);
