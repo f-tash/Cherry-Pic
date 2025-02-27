@@ -27,8 +27,8 @@ const InputDreamPage: React.FC<OtherUserPostProps> = ({ dream }) => {
           fontWeight: 400,
           fontStyle: "normal",
           wordWrap: "break-word",
-          transform: "translate(-50%, -50%)", // これで中央に配置
-          textAlign: "center", // 中央揃え
+          transform: "translate(-50%, -50%)",
+          textAlign: "center",
         }}
       >
         {dream}

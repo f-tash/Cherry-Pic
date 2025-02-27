@@ -53,7 +53,9 @@ const GeneratePictureModal: React.FC<GeneratePictureModalProps> = ({
             alt="仮の画像"
             style={{ marginTop: 30 }}
           />
-          <Typography sx={{ mt: 5 }}>あなたの夢：{dreamTitle}</Typography>
+          <Typography sx={{ mt: 5, mx: 10 }}>
+            あなたの夢：{dreamTitle}
+          </Typography>
           <Button
             variant="contained"
             sx={{
