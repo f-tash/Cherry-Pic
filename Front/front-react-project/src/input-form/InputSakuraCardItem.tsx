@@ -6,6 +6,7 @@ const InputSakuraCardItem = ({ value, setValue }) => {
   return (
     <Box position={"relative"} display="inline-block">
       <img src="./sakura.png" alt="入力用の桜画像" width={180} height={180} />
+      {/* MEMO:ここに夢を入力する */}
       <TextField
         id="outlined-multiline-static"
         variant="outlined"
