@@ -1,20 +1,30 @@
 import React, { useState } from "react";
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import SakuraCardArea from "../input-form/SakuraCardArea.tsx";
 import GeneratePictureModal from "../input-form/modal/GenatatePictureModal.tsx";
 
 const InputDreamPage: React.FC = () => {
   const [value, setValue] = useState("");
+  const [error, setError] = useState("");
   return (
     <Box
       display={"flex"}
       justifyContent={"center"}
       alignItems={"center"}
       flexDirection={"column"}
-      marginTop={10}
+      marginTop={8}
     >
+      <Typography
+        style={{ color: "red", minHeight: "24px", marginBottom: "8px" }}
+      >
+        {error ? error : ""}
+      </Typography>
       <SakuraCardArea value={value} setValue={setValue} />
-      <GeneratePictureModal dreamTitle={value} />
+      <GeneratePictureModal
+        dreamTitle={value}
+        value={value}
+        setError={setError}
+      />
     </Box>
   );
 };
