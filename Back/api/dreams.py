@@ -1,4 +1,4 @@
-from db.connect import post_dreams, update_img_url, get_dreams
+from db.connect import post_dreams, update_img_url, get_dreams, submit_dream
 from db.save_image import save_image
 from api.image_generate import image_generation
 
@@ -25,3 +25,14 @@ def post_dreams_to_db(dream_title:str):
     img_url = save_image(id,file_path)
     update_img_url(id,img_url)
     return img_url
+
+def submit_dream(dream_id:int):
+    """
+    Submits a dream to the database.
+
+    Args:
+        dream_id (int): The id of the dream.
+    Returns:
+        None
+    """
+    submit_dream(dream_id)
