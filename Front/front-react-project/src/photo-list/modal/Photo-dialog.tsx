@@ -29,7 +29,7 @@ const PhotDialog: React.FC<PhotoDialogProps> = (props) => {
                     <img src={props.url} alt={props.dream_title} className="photo-dialog-img"></img>
                     <div className="photo-dialog-title">
                         <img src="./sakura.png" alt="Cherry-Blossum" style={{ height: "56px", width: "auto" }} />
-                        <h3 style={{ fontSize: "16px" }}>{props.dream_title}</h3>
+                        <h3 style={{ fontSize: "20px" }}>{props.dream_title}</h3>
                     </div>
                     <div style={{ display: "flex", flexDirection: "row", alignItems: "center", }}>
                         <div style={{ padding: "0.4em", borderRadius: "5px 0 0 5px", backgroundColor: "#D9D9D9" }}>

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-
-import { Container, Box, Grid2 } from "@mui/material"; // マテリアルUIのコンポーネントをインポート
+import { Container, Box, Grid2, useMediaQuery } from "@mui/material"; // マテリアルUIのコンポーネントをインポート
 
 import PhotDialog from "../photo-list/modal/Photo-dialog.tsx"; // ダイアログのコンポーネントをインポート
 import PhotoCard from "../photo-list/PhotoCard.tsx"; // 写真カードのコンポーネントをインポート
@@ -11,8 +10,9 @@ import { PhotoInfo, PhotoDialogProps } from "../photo-list/Photo-list-type"; // 
 const PhotoList: React.FC = () => {
     const [photosInfoList, setPhotosInfoList] = useState<PhotoInfo[]>([]); // 写真情報
     const [isDialog, setIsDialog] = useState<boolean>(false); // ダイアログの表示状態
+    const isMobile = useMediaQuery("(max-width:850px)");
 
-    const endpoint = "https://cherry-pic.onrender.com/dreams"; // APIのエンドポイント
+    const endpoint = "https://cherry-pic.onrender.com/dreams";
 
     // ダイアログの表示状態を変更
     const closeDialog = () => {
@@ -65,14 +65,13 @@ const PhotoList: React.FC = () => {
     return (
         <>
             <Box>
-                <Box component="h1" sx={{ ml: "50px", mb: "30px", fontSize: "48px" }}>Cherry Pic</Box>
+                <Box component="h1" sx={{ ml: isMobile ? "0" : "50px", mb: isMobile ? "0" : "30px", fontSize: "48px", textAlign: isMobile ? "center" : "left" }}>Cherry Pic</Box>
                 <Container sx={{ mt: "5px" }}>
-
-                    <Grid2 container spacing={3} >
+                    <Grid2 container spacing={3}>
                         {
                             // 写真情報を元に写真カードを繰り返しで生成
                             photosInfoList.map((photo) => (
-                                <Grid2 key={photo.dream_id} size={3} sx={{ textAlign: "center", bgcolor: "", marginTop: "10px" }}>
+                                <Grid2 key={photo.dream_id} size={isMobile ? 4 : 3} sx={{ textAlign: "center", bgcolor: "", marginTop: "10px" }}>
                                     <div onClick={() => handleOpenDialog(photo)}>
                                         <PhotoCard {...photo} />
                                     </div>
@@ -83,7 +82,7 @@ const PhotoList: React.FC = () => {
                 </Container>
                 <PostLinkButton />
                 <PhotDialog {...dialogProps} isDialog={isDialog}></PhotDialog>
-            </Box>
+            </Box >
         </>
     );
 };
