@@ -28,7 +28,7 @@ const PhotoList: React.FC = () => {
         isDialog: isDialog
     });
 
-    // 初回レンダリング時のみ実行
+    // 初回レンダリング時に写真情報を取得
     useEffect(() => {
         setPhotosInfoList([
             { dream_id: 1, dream_title: "大富豪になる", url: "https://via.placeholder.com/150" },

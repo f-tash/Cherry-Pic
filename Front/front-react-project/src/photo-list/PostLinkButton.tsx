@@ -27,7 +27,6 @@ const PostLinkButton: React.FC = () => {
           "&:hover": { opacity: 1 },
         }}
       >
-        ＋
       </Button>
     </>
   );
