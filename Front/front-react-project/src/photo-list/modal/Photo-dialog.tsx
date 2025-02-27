@@ -12,10 +12,6 @@ const PhotDialog: React.FC<PhotoDialogProps> = (props) => {
         props.closeDialog();
     };
 
-    /*
-    const [defaultFontSize, setDefaultFontSize] = useState<number>(24); // タイトルのデフォルトのフォントサイズ
-    */
-
     // URLをコピーする
     const copyUrl = async () => {
         try {
@@ -26,16 +22,6 @@ const PhotDialog: React.FC<PhotoDialogProps> = (props) => {
         }
     }
 
-    // タイトルのフォントサイズを自動調整
-    /*
-    const adjustFontSize = (title: string) => {
-        if (title.length > 20) {
-            return "20px";
-        }
-        return "24px";
-    }
-    */
-
     return (
         <>
             <Dialog open={props.isDialog} onClose={handleClose} sx={{ position: "relative" }}>
@@ -43,9 +29,9 @@ const PhotDialog: React.FC<PhotoDialogProps> = (props) => {
                     <img src={props.url} alt={props.dream_title} className="photo-dialog-img"></img>
                     <div className="photo-dialog-title">
                         <img src="./sakura.png" alt="Cherry-Blossum" style={{ height: "56px", width: "auto" }} />
-                        <h3 style={{ fontSize: "24px" }}>{props.dream_title}</h3>
+                        <h3 style={{ fontSize: "16px" }}>{props.dream_title}</h3>
                     </div>
-                    <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
+                    <div style={{ display: "flex", flexDirection: "row", alignItems: "center", }}>
                         <div style={{ padding: "0.4em", borderRadius: "5px 0 0 5px", backgroundColor: "#D9D9D9" }}>
                             <p style={{ margin: "0", overflow: "hidden", textOverflow: "ellipsis", width: "350px" }}>{props.url}</p>
                         </div>
