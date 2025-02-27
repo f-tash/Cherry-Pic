@@ -40,7 +40,7 @@ paths:
                       description: Dream Title
                     url:
                       type: string
-                      format: img_uri
+                      format: uri
                       description: Dream Image URL
     post:
       summary: Add a new dream.
@@ -57,23 +57,24 @@ paths:
       responses:
         "201":
           description: Dream created successfully
-            content:
-              application/json:
-                schema:
-                  type: object
-                    dream_id:
-                      type: integer
-                      description: Dream ID
-                    url:
-                      type: string
-                      format: img_uri
-                      description: Dream Image URL
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  dream_id:
+                    type: integer
+                    description: Dream ID
+                  url:
+                    type: string
+                    format: uri
+                    description: Dream Image URL
         "400":
           description: Invalid input, object invalid
         "409":
           description: An existing dream already exists
-    update:
-      summary: Update an existing dream to submit.
+    patch:
+      summary: Submit a dream.
       requestBody:
         required: true
         content:
@@ -82,10 +83,13 @@ paths:
               type: object
               properties:
                 dream_id:
-                  type: string
+                  type: integer
                   description: Dream ID
+                submit:
+                  type: boolean
+                  description: Whether the dream is submitted (true/false)
       responses:
         "200":
-          description: Dream updated successfully
+          description: Dream submitted successfully
         "404":
           description: Dream not found
