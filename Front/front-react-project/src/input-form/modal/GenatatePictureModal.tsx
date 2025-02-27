@@ -1,16 +1,34 @@
 import { Box, Button, Modal, Typography } from "@mui/material";
+import { z } from "zod";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
 type GeneratePictureModalProps = {
   dreamTitle: string;
+  value: string;
+  setError: (msg: string) => void;
 };
 
 const GeneratePictureModal: React.FC<GeneratePictureModalProps> = ({
+  value,
+  setError,
   dreamTitle,
 }) => {
   const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
+  const schema = z
+    .string()
+    .min(5, "夢は1文字以上入力してください")
+    .max(60, "夢は最大60文字までです");
+
+  const handleOpen = () => {
+    const result = schema.safeParse(value);
+    if (!result.success) {
+      setError(result.error.errors[0].message);
+    } else {
+      setError(""); // エラーなし
+      setOpen(true);
+    }
+  };
   const handleClose = () => setOpen(false);
   const navigate = useNavigate();
   return (
