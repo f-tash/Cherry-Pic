@@ -54,13 +54,20 @@ paths:
                 dream_title:
                   type: string
                   description: Dream Title
-                url:
-                  type: string
-                  format: img_uri
-                  description: Dream Image URL
       responses:
         "201":
           description: Dream created successfully
+            content:
+              application/json:
+                schema:
+                  type: object
+                    dream_id:
+                      type: integer
+                      description: Dream ID
+                    url:
+                      type: string
+                      format: img_uri
+                      description: Dream Image URL
         "400":
           description: Invalid input, object invalid
         "409":
