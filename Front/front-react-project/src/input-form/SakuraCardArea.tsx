@@ -7,62 +7,29 @@ import { PhotoInfo } from "../photo-list/Photo-list-type";
 const SakuraCardArea = ({ value, setValue }) => {
   const [photosInfoList, setPhotosInfoList] = useState<PhotoInfo[]>([]);
   const isMobile = useMediaQuery("(max-width:600px)");
+  const endpoint = "https://cherry-pic.onrender.com/dreams"; // APIのエンドポイント
 
   useEffect(() => {
-    setPhotosInfoList([
-      {
-        dream_id: 1,
-        dream_title: "大富豪になる",
-        url: "./ai-picture.png",
-      },
-      {
-        dream_id: 2,
-        dream_title: "野球選手になりたい",
-        url: "./ai-picture.png",
-      },
-      {
-        dream_id: 3,
-        dream_title: "仮面ライダーになる",
-        url: "./ai-picture.png",
-      },
-      {
-        dream_id: 4,
-        dream_title: "世界一周旅行クルーズ",
-        url: "https://via.placeholder.com/150",
-      },
-      {
-        dream_id: 5,
-        dream_title: "お客さんも自分も笑顔に幸せにできるヘアメイクさんになる!!",
-        url: "https://via.placeholder.com/150",
-      },
-      {
-        dream_id: 6,
-        dream_title: "カフェを開く",
-        url: "https://via.placeholder.com/150",
-      },
-      {
-        dream_id: 7,
-        dream_title: "猫カフェ巡り",
-        url: "https://via.placeholder.com/150",
-      },
-      {
-        dream_id: 8,
-        dream_title: "スポーツカーを買う",
-        url: "https://via.placeholder.com/150",
-      },
-      {
-        dream_id: 9,
-        dream_title:
-          "人生楽しくやりたいことをやって自分で幸せになれるように頑張ります。カラーが得意な美容師さんを目指します。",
-        url: "https://via.placeholder.com/150",
-      },
-      {
-        dream_id: 10,
-        dream_title: "ゲームを作る",
-        url: "https://via.placeholder.com/150",
-      },
-    ]);
-    // 仮の写真情報をセット
+    // APIから写真情報のリストを取得
+    const getPhotos = async () => {
+      try {
+        const response = await fetch(endpoint, {
+          headers: {
+            "ngrok-skip-browser-warning": "true",
+          },
+        });
+        const data = await response.json();
+        setPhotosInfoList((prev) => {
+          const newData = data.filter(
+            (photo) => !prev.some((p) => p.dream_id === photo.id)
+          );
+          return [...prev, ...newData]; // 重複しないデータのみ追加
+        });
+      } catch (e) {
+        alert("投稿の取得に失敗しました" + e);
+      }
+    };
+    getPhotos();
   }, []);
 
   if (photosInfoList.length === 0) {

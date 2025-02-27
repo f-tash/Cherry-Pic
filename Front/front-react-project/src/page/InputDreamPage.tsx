@@ -6,6 +6,7 @@ import GeneratePictureModal from "../input-form/modal/GenatatePictureModal.tsx";
 const InputDreamPage: React.FC = () => {
   const [value, setValue] = useState("");
   const [error, setError] = useState("");
+
   return (
     <Box
       maxHeight={"100vh"}

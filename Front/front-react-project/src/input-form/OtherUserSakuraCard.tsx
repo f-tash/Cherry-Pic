@@ -19,6 +19,7 @@ const InputDreamPage: React.FC<OtherUserPostProps> = ({
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       sx={{ overflow: "hidden", cursor: "pointer" }}
+      borderRadius={3}
     >
       <Box
         component="img"
