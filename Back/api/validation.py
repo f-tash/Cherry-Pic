@@ -14,13 +14,7 @@ def validate_post_dreams(data):
 def validate_update_dreams(data):
     # idが含まれているかの確認
     dream_id = data["dream_id"]
-    if dream_id is None:
-        return False
-
-    # submitがTrueかの確認
-    if "submit" not in data:
-        return False
-    if data["submit"] != True:
+    if dream_id is None or "submit" not in data or data["submit"] != True:
         return False
 
     return True
