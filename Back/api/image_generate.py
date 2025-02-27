@@ -1,4 +1,4 @@
-from openaiapi_client import get_client
+from api.openaiapi_client import get_client
 import tempfile
 import base64
 
