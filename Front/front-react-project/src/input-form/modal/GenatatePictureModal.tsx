@@ -1,5 +1,6 @@
 import { Box, Button, Modal, Typography } from "@mui/material";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 type GeneratePictureModalProps = {
   dreamTitle: string;
@@ -11,6 +12,7 @@ const GeneratePictureModal: React.FC<GeneratePictureModalProps> = ({
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const navigate = useNavigate();
   return (
     <Box>
       <Button
@@ -58,6 +60,7 @@ const GeneratePictureModal: React.FC<GeneratePictureModalProps> = ({
           </Typography>
           <Button
             variant="contained"
+            onClick={() => navigate("/photo-list")}
             sx={{
               bgcolor: "#FF75B6",
               color: "white",
