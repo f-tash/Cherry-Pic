@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { Container, Box, Grid2, Button } from "@mui/material";
-
+import { Container, Box, Grid2 } from "@mui/material";
 
 import PhotDialog from "./Photo-dialog.tsx"; // ダイアログのコンポーネントをインポート
+import PhotoCard from "./PhotoCard.tsx"; // 写真カードのコンポーネントをインポート
+import PostLinkButton from "./PostLinkButton.tsx"; // 投稿ページへのリンクボタンのコンポーネントをインポート
+
 import { PhotoInfo } from "./Photo-list-type"; // 写真情報の型定義をインポート
 import { PhotoDialogProps } from "./Photo-list-type"; // ダイアログのプロップスの型定義をインポート
 
@@ -79,35 +80,8 @@ const PhotoList: React.FC = () => {
     );
 };
 
-// 写真情報を受け取って表示するコンポーネント
-const PhotoCard: React.FC<PhotoInfo> = (props) => {
-    return (
-        <>
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                <img src={props.url} alt={props.title} style={{ width: "250px", height: "250px", marginTop: "5px", borderRadius: "5%", backgroundColor: "blue" }}></img>
-                <p>{props.title}</p>
-            </div>
-        </>
-    );
-};
 
-// 投稿ページへのリンクボタン
-const PostLinkButton: React.FC = () => {
-    const navigate = useNavigate();
-    const handleClick = () => {
-        navigate("/");
-    }
 
-    return (
-        <>
-            <Button onClick={handleClick} sx={{
-                textAlign: "center", position: "fixed", bottom: "50px", right: "50px", borderRadius: "50%", backgroundColor: "#FF75B6", color: "white",
-                width: "56px", height: "56px", opacity: 0.5, "&:hover": { opacity: 1 }
-            }}>
-                ＋
-            </Button>
-        </>
-    );
-}
+
 
 export default PhotoList;
