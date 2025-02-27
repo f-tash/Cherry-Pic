@@ -1,15 +1,11 @@
-from openai import OpenAI
+from openaiapi_client import get_client
 import tempfile
 import base64
-import os
-
-# インスタンス化とAPIキーの設定
-client = OpenAI()
-client.api_key = os.getenv("OPENAI_API_KEY")
 
 
 # 画像を生成する関数し、tmpファイルに保存してそのパスを返す
 def image_generation(title):
+    client = get_client()
     # 画像生成
     response = client.images.generate(
         model="dall-e-2",  # モデル選択
