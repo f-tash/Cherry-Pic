@@ -1,11 +1,22 @@
+import { Link } from "react-router-dom";
 import React from "react";
-import Button from "@mui/material/Button";
 
 const Home: React.FC = () => {
   return (
     <div>
-      Home Component
-      <Button >aaaa</Button>
+      <h1>Home Component</h1>
+     
+
+      <nav>
+        <ul>
+          <li>
+            <Link to="/photo-list">Go to Photo List</Link>
+          </li>
+          <li>
+            <Link to="/input">Go to Input Page</Link>
+          </li>
+        </ul>
+      </nav>
     </div>
   );
 };
