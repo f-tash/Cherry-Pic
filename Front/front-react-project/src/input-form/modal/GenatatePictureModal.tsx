@@ -17,7 +17,7 @@ const GeneratePictureModal: React.FC<GeneratePictureModalProps> = ({
   const [open, setOpen] = React.useState(false);
   const schema = z
     .string()
-    .min(5, "夢は1文字以上入力してください")
+    .min(1, "夢は1文字以上入力してください")
     .max(60, "夢は最大60文字までです");
 
   const handleOpen = () => {
