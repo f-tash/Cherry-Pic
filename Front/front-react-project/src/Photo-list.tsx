@@ -28,10 +28,10 @@ const PhotoList: React.FC = () => {
     // 初回レンダリング時のみ実行
     useEffect(() => {
         setPhotosInfoList([
-            { id: 1, title: "photo1", url: "https://via.placeholder.com/150" },
-            { id: 2, title: "photo2", url: "https://via.placeholder.com/150" },
-            { id: 3, title: "photo3", url: "https://via.placeholder.com/150" },
-            { id: 4, title: "photo4", url: "https://via.placeholder.com/150" },
+            { id: 1, title: "大富豪になる", url: "https://via.placeholder.com/150" },
+            { id: 2, title: "野球選手になりたい", url: "https://via.placeholder.com/150" },
+            { id: 3, title: "仮面ライダーになる", url: "https://via.placeholder.com/150" },
+            { id: 4, title: "世界一周旅行クルーズ", url: "https://via.placeholder.com/150" },
             { id: 5, title: "photo5", url: "https://via.placeholder.com/150" },
         ]); // 仮の写真情報をセット
 
@@ -55,13 +55,15 @@ const PhotoList: React.FC = () => {
     return (
         <>
             <Box>
-                <Container sx={{ alignItems: "center", mt: "5px" }}>
+                <Container sx={{ mt: "5px" }}>
+                    <h1>
+                        Cherry-Pic
+                    </h1>
                     <Grid2 container spacing={3} >
                         {
                             // 写真情報を元に写真カードを繰り返しで生成
                             photosInfoList.map((photo) => (
-
-                                <Grid2 key={photo.id} size={3}>
+                                <Grid2 key={photo.id} size={3} sx={{ textAlign: "center", bgcolor: "", marginTop: "10px" }}>
                                     <div onClick={() => handleOpenDialog(photo)}>
                                         <PhotoCard {...photo} />
                                     </div>
@@ -82,7 +84,7 @@ const PhotoCard: React.FC<PhotoInfo> = (props) => {
     return (
         <>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-                <img src={props.url} alt={props.title}></img>
+                <img src={props.url} alt={props.title} style={{ width: "250px", height: "250px", marginTop: "5px", borderRadius: "5%", backgroundColor: "blue" }}></img>
                 <p>{props.title}</p>
             </div>
         </>
