@@ -9,16 +9,16 @@ const SakuraCardArea = ({ value, setValue }) => {
 
   useEffect(() => {
     setPhotosInfoList([
-      { id: 1, title: "大富豪になる", url: "https://via.placeholder.com/150" },
+      { id: 1, title: "大富豪になる", url: "./ai-picture.png" },
       {
         id: 2,
         title: "野球選手になりたい",
-        url: "https://via.placeholder.com/150",
+        url: "./ai-picture.png",
       },
       {
         id: 3,
         title: "仮面ライダーになる",
-        url: "https://via.placeholder.com/150",
+        url: "./ai-picture.png",
       },
       {
         id: 4,
@@ -52,28 +52,66 @@ const SakuraCardArea = ({ value, setValue }) => {
     return <Typography>Loading...</Typography>;
   }
   const dreams = [
-    { gridColumn: 2, gridRow: 1, dream: photosInfoList[0].title },
-    { gridColumn: 3, gridRow: 1, dream: photosInfoList[1].title },
-    { gridColumn: 4, gridRow: 1, dream: photosInfoList[2].title },
+    {
+      gridColumn: 2,
+      gridRow: 1,
+      dream: photosInfoList[0].title,
+      dreamImageUrl: photosInfoList[0].url,
+    },
+    {
+      gridColumn: 3,
+      gridRow: 1,
+      dream: photosInfoList[1].title,
+      dreamImageUrl: photosInfoList[1].url,
+    },
+    {
+      gridColumn: 4,
+      gridRow: 1,
+      dream: photosInfoList[2].title,
+      dreamImageUrl: photosInfoList[2].url,
+    },
     {
       gridColumn: 1,
       gridRow: 2,
       dream: photosInfoList[3].title,
+      dreamImageUrl: photosInfoList[3].url,
     },
     {
       gridColumn: 2,
       gridRow: 2,
       dream: photosInfoList[4].title,
+      dreamImageUrl: photosInfoList[4].url,
     },
-    { gridColumn: 4, gridRow: 2, dream: photosInfoList[5].title },
-    { gridColumn: 5, gridRow: 2, dream: photosInfoList[6].title },
-    { gridColumn: 2, gridRow: 3, dream: photosInfoList[7].title },
+    {
+      gridColumn: 4,
+      gridRow: 2,
+      dream: photosInfoList[5].title,
+      dreamImageUrl: photosInfoList[5].url,
+    },
+    {
+      gridColumn: 5,
+      gridRow: 2,
+      dream: photosInfoList[6].title,
+      dreamImageUrl: photosInfoList[6].url,
+    },
+    {
+      gridColumn: 2,
+      gridRow: 3,
+      dream: photosInfoList[7].title,
+      dreamImageUrl: photosInfoList[7].url,
+    },
     {
       gridColumn: 3,
       gridRow: 3,
       dream: photosInfoList[8].title,
+      dreamImageUrl: photosInfoList[8].url,
     },
-    { gridColumn: 4, gridRow: 3, dream: photosInfoList[9].title },
+    {
+      gridColumn: 4,
+      gridRow: 3,
+      dream: photosInfoList[9].title,
+      dreamImageUrl: photosInfoList[9].url,
+    },
   ];
 
   return (
@@ -94,7 +132,10 @@ const SakuraCardArea = ({ value, setValue }) => {
             gridRow: dream.gridRow,
           }}
         >
-          <OtherUserPost dream={dream.dream} />
+          <OtherUserPost
+            dreamTitle={dream.dream}
+            dreamImage={dream.dreamImageUrl}
+          />
         </Box>
       ))}
 
