@@ -12,7 +12,7 @@ const PhotoList: React.FC = () => {
     const [photosInfoList, setPhotosInfoList] = useState<PhotoInfo[]>([]); // 写真情報
     const [isDialog, setIsDialog] = useState<boolean>(false); // ダイアログの表示状態
 
-    const endpoint = "http://localhost:4010/dreams"; // APIのエンドポイント
+    const endpoint = "https://cherry-pic.onrender.com/dreams"; // APIのエンドポイント
 
     // ダイアログの表示状態を変更
     const closeDialog = () => {
@@ -41,7 +41,11 @@ const PhotoList: React.FC = () => {
         // APIから写真情報のリストを取得
         const getPhotos = async () => {
             try {
-                const response = await fetch(endpoint);
+                const response = await fetch(endpoint, {
+                    headers: {
+                        "ngrok-skip-browser-warning": "true"
+                    }
+                })
                 const data = await response.json();
                 setPhotosInfoList((prevPhotosInfoList) => [...prevPhotosInfoList, ...data]);
             } catch (e) {
