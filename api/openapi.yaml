@@ -25,7 +25,7 @@ paths:
                   type: object
                   properties:
                     dream_id:
-                      type: string
+                      type: int
                       description: Dream ID
                     dream_title:
                       type: string
@@ -46,14 +46,6 @@ paths:
                 dream_title:
                   type: string
                   description: Dream Title
-                url:
-                  type: string
-                  format: img_uri
-                  description: Dream Image URL
       responses:
         "201":
           description: Dream created successfully
-        "400":
-          description: Invalid input, object invalid
-        "409":
-          description: An existing dream already exists
