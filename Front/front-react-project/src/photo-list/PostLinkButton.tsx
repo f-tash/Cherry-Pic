@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
+import AddIcon from '@mui/icons-material/Add';
 
 // 投稿ページへのリンクボタン
 const PostLinkButton: React.FC = () => {
@@ -19,14 +20,16 @@ const PostLinkButton: React.FC = () => {
           bottom: "50px",
           right: "50px",
           borderRadius: "50%",
-          backgroundColor: "#FF75B6",
-          color: "white",
+          padding: "0", minWidth: "0",
           width: "56px",
           height: "56px",
+          backgroundColor: "#FF75B6",
+          color: "white",
           opacity: 0.5,
           "&:hover": { opacity: 1 },
         }}
       >
+        <AddIcon />
       </Button>
     </>
   );
