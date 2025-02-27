@@ -42,6 +42,8 @@ paths:
                       type: string
                       format: uri
                       description: Dream Image URL
+          "400":
+            description: Bad request
     post:
       summary: Add a new dream.
       requestBody:
@@ -70,9 +72,7 @@ paths:
                     format: uri
                     description: Dream Image URL
         "400":
-          description: Invalid input, object invalid
-        "409":
-          description: An existing dream already exists
+          description: Bad Request
     patch:
       summary: Submit a dream.
       requestBody:
@@ -91,5 +91,7 @@ paths:
       responses:
         "200":
           description: Dream submitted successfully
+        "400":
+          description: Bad Request
         "404":
           description: Dream not found
