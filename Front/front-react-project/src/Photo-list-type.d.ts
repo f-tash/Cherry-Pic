@@ -3,8 +3,8 @@
 
 // 写真情報の型定義
 export type PhotoInfo = {
-    id: number; // 画像のID
-    title: string; // 画像のタイトル
+    dream_id: number; // 画像のID
+    dream_title: string; // 画像のタイトル
     url: string; // 画像のURL
 };
 
