@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, jsonify
-
+from flask_cors import CORS
 
 from api.dreams import get_dreams_from_db, post_dreams_to_db, submit_dream
 from api.validation import validate_post_dreams, validate_update_dreams
@@ -7,7 +7,7 @@ from api.validation import validate_post_dreams, validate_update_dreams
 from returns.pipeline import is_successful
 # Flaskの設定
 app = Flask(__name__)
-
+CORS(app)
 
 @app.route("/")
 def home():
