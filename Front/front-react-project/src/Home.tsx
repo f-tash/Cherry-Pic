@@ -10,7 +10,7 @@ const Home: React.FC = () => {
         flexDirection: "column",
         
         alignItems: "center",
-        backgroundImage: "url('/background.jpeg')",
+        backgroundImage: `url('/Cherry-Pic/background.jpeg')`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         minHeight: "100vh",
