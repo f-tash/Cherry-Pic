@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
-import OtherUserPost from "./OtherUserPost.tsx";
+import OtherUserPost from "./OtherUserSakuraCard.tsx";
 import InputSakuraCardItem from "./InputSakuraCardItem.tsx";
 
 const SakuraCardArea = () => {
