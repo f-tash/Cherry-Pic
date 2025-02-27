@@ -4,6 +4,8 @@ import { set, z } from "zod";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import LoadingOverlay from "../Overlay.tsx";
+
 type GeneratePictureModalProps = {
   dreamTitle: string;
   value: string;
@@ -174,6 +176,7 @@ const GeneratePictureModal: React.FC<GeneratePictureModalProps> = ({
           </Modal>
         </>
       )}
+      {loading && <LoadingOverlay />}
     </Box>
   );
 };
