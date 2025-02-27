@@ -1,9 +1,9 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
-import OtherUserPost from "./OtherUserPost.tsx";
+import OtherUserPost from "./OtherUserSakuraCard.tsx";
 import InputSakuraCardItem from "./InputSakuraCardItem.tsx";
 
-const SakuraCardArea = () => {
+const SakuraCardArea = ({ value, setValue }) => {
   const dreams = [
     { gridColumn: 2, gridRow: 1, dream: "大富豪になる！" },
     { gridColumn: 3, gridRow: 1, dream: "世界一周する！" },
@@ -66,7 +66,7 @@ const SakuraCardArea = () => {
         <Typography my={-2} zIndex={2}>
           あなたの「夢」は？
         </Typography>
-        <InputSakuraCardItem />
+        <InputSakuraCardItem value={value} setValue={setValue} />
       </Box>
     </Box>
   );
