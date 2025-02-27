@@ -22,7 +22,7 @@ const PhotoList: React.FC = () => {
 
     // ダイアログのプロップス
     const [dialogProps, setDialogProps] = useState<PhotoDialogProps>({
-        dream_id: 0,
+        dream_id: -1,
         dream_title: "",
         url: "",
         closeDialog: closeDialog,
@@ -44,9 +44,7 @@ const PhotoList: React.FC = () => {
             try {
                 const response = await fetch(endpoint);
                 const data = await response.json();
-                // APIの確認
-                console.log("idがnullのため、100に変更します");
-                setPhotosInfoList(data);
+                setPhotosInfoList((prevPhotosInfoList) => [...prevPhotosInfoList, ...data]);
             } catch (e) {
                 alert("写真情報の取得に失敗しました" + e);
             }
