@@ -1,7 +1,8 @@
 import os
 from flask import Flask, render_template, request, jsonify
 from openai import OpenAI
-
+import tempfile
+import base64
 
 # インスタンス化とAPIキーの設定
 client = OpenAI()
@@ -23,6 +24,11 @@ def image_generation(title):
         quality="standard",  # 品質
         style="vivid",
     )
+    # tmpファイルに保存する
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".png") as f:
+        image_data = base64.b64decode(response.data[0].b64_json)
+        f.write(image_data)
+        return f.name
 
 
 @app.route("/")
