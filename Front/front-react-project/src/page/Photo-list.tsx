@@ -30,14 +30,6 @@ const PhotoList: React.FC = () => {
 
     // 初回レンダリング時に写真情報を取得
     useEffect(() => {
-        setPhotosInfoList([
-            { dream_id: 1, dream_title: "大富豪になる", url: "https://via.placeholder.com/150" },
-            { dream_id: 2, dream_title: "野球選手になりたい", url: "https://via.placeholder.com/150" },
-            { dream_id: 3, dream_title: "仮面ライダーになる", url: "https://via.placeholder.com/150" },
-            { dream_id: 4, dream_title: "世界一周旅行クルーズでイギリスに行って、ロンドン橋を見て渡りたい！！！", url: "https://via.placeholder.com/150" },
-            { dream_id: 5, dream_title: "宝くじを当てる", url: "https://via.placeholder.com/150" },
-        ]); // 仮の写真情報をセット
-
         // APIから写真情報のリストを取得
         const getPhotos = async () => {
             try {
