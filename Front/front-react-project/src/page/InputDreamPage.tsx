@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Button } from "@mui/material";
-import SakuraCardArea from "./SakuraCardArea.tsx";
+import SakuraCardArea from "../input-form/SakuraCardArea.tsx";
 
 const InputDreamPage: React.FC = () => {
   return (
