@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Container, Box, Grid2 } from "@mui/material";
+
+import { Container, Box, Grid2 } from "@mui/material"; // マテリアルUIのコンポーネントをインポート
 
 import PhotDialog from "./Photo-dialog.tsx"; // ダイアログのコンポーネントをインポート
 import PhotoCard from "./PhotoCard.tsx"; // 写真カードのコンポーネントをインポート
@@ -12,6 +13,8 @@ const PhotoList: React.FC = () => {
     const [photosInfoList, setPhotosInfoList] = useState<PhotoInfo[]>([]); // 写真情報
     const [isDialog, setIsDialog] = useState<boolean>(false); // ダイアログの表示状態
 
+    const endpoint = "http://localhost:4010/dreams"; // APIのエンドポイント
+
     // ダイアログの表示状態を変更
     const closeDialog = () => {
         setIsDialog(false);
@@ -19,8 +22,8 @@ const PhotoList: React.FC = () => {
 
     // ダイアログのプロップス
     const [dialogProps, setDialogProps] = useState<PhotoDialogProps>({
-        id: 0,
-        title: "",
+        dream_id: 0,
+        dream_title: "",
         url: "",
         closeDialog: closeDialog,
         isDialog: isDialog
@@ -29,21 +32,34 @@ const PhotoList: React.FC = () => {
     // 初回レンダリング時のみ実行
     useEffect(() => {
         setPhotosInfoList([
-            { id: 1, title: "大富豪になる", url: "https://via.placeholder.com/150" },
-            { id: 2, title: "野球選手になりたい", url: "https://via.placeholder.com/150" },
-            { id: 3, title: "仮面ライダーになる", url: "https://via.placeholder.com/150" },
-            { id: 4, title: "世界一周旅行クルーズ", url: "https://via.placeholder.com/150" },
-            { id: 5, title: "photo5", url: "https://via.placeholder.com/150" },
+            { dream_id: 1, dream_title: "大富豪になる", url: "https://via.placeholder.com/150" },
+            { dream_id: 2, dream_title: "野球選手になりたい", url: "https://via.placeholder.com/150" },
+            { dream_id: 3, dream_title: "仮面ライダーになる", url: "https://via.placeholder.com/150" },
+            { dream_id: 4, dream_title: "世界一周旅行クルーズ", url: "https://via.placeholder.com/150" },
+            { dream_id: 5, dream_title: "photo5", url: "https://via.placeholder.com/150" },
         ]); // 仮の写真情報をセット
 
+        // APIから写真情報のリストを取得
+        const getPhotos = async () => {
+            try {
+                const response = await fetch(endpoint);
+                const data = await response.json();
+                // APIの確認
+                console.log("idがnullのため、100に変更します");
+                setPhotosInfoList(data);
+            } catch (e) {
+                alert("写真情報の取得に失敗しました" + e);
+            }
+        };
 
+        getPhotos();
     }, []);
 
     // 詳細情報のダイアログを開く
     const handleOpenDialog = (photoInfo: PhotoInfo) => {
         setDialogProps({
-            id: photoInfo.id,
-            title: photoInfo.title,
+            dream_id: photoInfo.dream_id,
+            dream_title: photoInfo.dream_title,
             url: photoInfo.url,
             closeDialog: closeDialog,
             isDialog: true
@@ -64,7 +80,7 @@ const PhotoList: React.FC = () => {
                         {
                             // 写真情報を元に写真カードを繰り返しで生成
                             photosInfoList.map((photo) => (
-                                <Grid2 key={photo.id} size={3} sx={{ textAlign: "center", bgcolor: "", marginTop: "10px" }}>
+                                <Grid2 key={photo.dream_id} size={3} sx={{ textAlign: "center", bgcolor: "", marginTop: "10px" }}>
                                     <div onClick={() => handleOpenDialog(photo)}>
                                         <PhotoCard {...photo} />
                                     </div>
