@@ -1,8 +1,10 @@
-import React from "react";
-import { Box, Button } from "@mui/material";
+import React, { useState } from "react";
+import { Box } from "@mui/material";
 import SakuraCardArea from "../input-form/SakuraCardArea.tsx";
+import GeneratePictureModal from "../input-form/modal/GenatatePictureModal.tsx";
 
 const InputDreamPage: React.FC = () => {
+  const [value, setValue] = useState("");
   return (
     <Box
       display={"flex"}
@@ -11,19 +13,8 @@ const InputDreamPage: React.FC = () => {
       flexDirection={"column"}
       marginTop={10}
     >
-      <SakuraCardArea />
-      <Button
-        variant="contained"
-        sx={{
-          bgcolor: "#FF75B6",
-          color: "white",
-          paddingX: 5,
-          borderRadius: 15,
-          marginTop: 5,
-        }}
-      >
-        画像を生成する
-      </Button>
+      <SakuraCardArea value={value} setValue={setValue} />
+      <GeneratePictureModal dreamTitle={value} />
     </Box>
   );
 };
