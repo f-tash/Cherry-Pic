@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./Home.tsx";
+import PhotoList from "./Photo-list.tsx";
 import InputDreamPage from "./InputDreamPage.tsx";
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/photo-list" element={<PhotoList />} />
         <Route path="/input" element={<InputDreamPage />} />
       </Routes>
     </Router>
