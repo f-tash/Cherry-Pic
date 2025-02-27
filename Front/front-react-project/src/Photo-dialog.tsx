@@ -14,7 +14,10 @@ const PhotDialog: React.FC<PhotoDialogProps> = (props) => {
             <Dialog open={props.isDialog} onClose={handleClose} >
                 <div className="photo-dialog-container">
                     <img src={props.url} alt={props.title} className="photo-dialog-img"></img>
-                    <h3>{props.title}</h3>
+                    <div className="photo-dialog-title">
+                        <img src="./sakura_only.png" alt="Cherry-Blossum" style={{ height: "50px", width: "auto" }} />
+                        <h3 style={{ fontSize: "24px" }}>{props.title}</h3>
+                    </div>
                 </div>
             </Dialog>
         </>

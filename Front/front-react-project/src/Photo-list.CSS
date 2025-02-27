@@ -5,6 +5,7 @@
     width: 540px;
     height: 480px;
     padding-top: 50px;
+    gap: 20px;
     background-color: white;
     border-radius: 5%;
     position: fixed;
@@ -18,4 +19,10 @@
     height: 350px;
     border-radius: 5%;
     background-color: blue;
+}
+
+.photo-dialog-title {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
