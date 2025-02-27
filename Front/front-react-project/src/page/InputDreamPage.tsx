@@ -8,11 +8,14 @@ const InputDreamPage: React.FC = () => {
   const [error, setError] = useState("");
   return (
     <Box
+      maxHeight={"100vh"}
+      maxWidth={"100vw"}
+      overflow={"hidden"}
       display={"flex"}
       justifyContent={"center"}
       alignItems={"center"}
       flexDirection={"column"}
-      marginTop={8}
+      marginTop={{ xs: 3, md: 8 }}
     >
       <Typography
         style={{ color: "red", minHeight: "24px", marginBottom: "8px" }}
