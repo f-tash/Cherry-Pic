@@ -3,7 +3,10 @@ import { Box, Typography } from "@mui/material";
 import SakuraCardArea from "../input-form/SakuraCardArea.tsx";
 import GeneratePictureModal from "../input-form/modal/GenatatePictureModal.tsx";
 
+import { useNavigate } from "react-router-dom";
+
 const InputDreamPage: React.FC = () => {
+  const navigate = useNavigate();
   const [value, setValue] = useState("");
   const [error, setError] = useState("");
 
@@ -20,7 +23,7 @@ const InputDreamPage: React.FC = () => {
     >
       <Box
         component="h1"
-        position={"absolute"}
+        position={"fixed"}
         top={3}
         left={"50px"}
         sx={{
@@ -29,7 +32,9 @@ const InputDreamPage: React.FC = () => {
           color: "Black",
           fontSize: { xs: 0, md: "42px" },
           textAlign: "left",
+          cursor: "pointer",
         }}
+        onClick={() => {navigate("/");}}
       >
         Cherry Pic
       </Box>
