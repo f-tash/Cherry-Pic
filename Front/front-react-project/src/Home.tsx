@@ -1,66 +1,121 @@
-import { Link } from "react-router-dom";
 import React from "react";
-
+import { Box, Button, Typography } from "@mui/material";
+import "./style.css";
+import { useNavigate } from "react-router-dom";
 const Home: React.FC = () => {
+  const navigate = useNavigate();
   return (
-    <div
-      style={{
-        position: "fixed",
-        display: "flex",
-        flexDirection: "column",
-        
-        alignItems: "center",
-        backgroundImage: `url('/Cherry-Pic/background.jpeg')`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        minHeight: "100vh",
-        minWidth: "100vw",
-        textAlign: "center",
-      }}
-    >
-      <h1 style={{ fontFamily: "'Pacifico', cursive" ,textShadow: "2px 2px 4px #ffffff", color: "Black", fontSize: "48px", marginTop: "20vh" }}>
-        Cherry Pic
-      </h1>
-      <nav>
-        <ul style={{ listStyle: "none", padding: 0 }}>
-          <li>
-            <Link
-              to="/photo-list"
-              style={{
-                display: "block",
-                fontSize: "24px",
-                padding: "20px",
-                margin: "10px 0",
-                backgroundColor: "rgba(0, 0, 0, 0.7)",
-                color: "white",
-                textDecoration: "none",
-                borderRadius: "10px",
-              }}
-            >
-              Go to Photo Page
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/input"
-              style={{
-                display: "block",
-                fontSize: "24px",
-                padding: "20px",
-                margin: "10px 0",
-                backgroundColor: "rgba(0, 0, 0, 0.7)",
-                color: "white",
-                textDecoration: "none",
-                borderRadius: "10px",
-              }}
-            >
-              Go to Input Page
-            </Link>
-          </li>
-        </ul>
-      </nav>
-    </div>
+    <>
+      <Box
+        sx={{
+          minHeight: "100vh",
+          minWidth: "100vw",
+          overflow: "hidden",
+          "::before": {
+            content: '""',
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundImage: `url('/Cherry-Pic/background.jpeg')`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            opacity: 0.4, // 背景だけ薄くする
+            zIndex: -1, // 背景を後ろに配置
+          },
+        }}
+      >
+        <Typography
+          fontSize={40}
+          position={"absolute"}
+          top={3}
+          left={"50px"}
+          sx={{
+            fontFamily: "Noto Serif JP, serif",
+            fontOpticalSizing: "auto",
+            fontWeight: "normal",
+            fontStyle: "normal",
+          }}
+        >
+          Cherry-Pic
+        </Typography>
+        <Box display={"flex"} flexDirection={"column"} alignItems={"center"}>
+          <Box mt={8} component={"img"} src="/Cherry-Pic/cherry-pic.png"></Box>
+          <Typography
+            fontSize={20}
+            letterSpacing={1}
+            my={5}
+            sx={{
+              fontFamily: "Noto Serif JP, serif",
+              fontOpticalSizing: "auto",
+              fontWeight: "normal",
+              fontStyle: "normal",
+            }}
+          >
+            心の中の夢が目の前の絵になる。
+          </Typography>
+          <Typography
+            textAlign={"center"}
+            lineHeight={1.7}
+            my={{ xs: 0, md: 4 }}
+            mx={{ xs: 2, md: 0 }}
+          >
+            Cherry-Picは入力されたあなたの夢を元にaiによって絵を作成します。
+            <br />
+            早速あなたの夢を描きましょう！
+          </Typography>
+        </Box>
+        <Box
+          display={"flex"}
+          gap={{ xs: 2, md: 5 }}
+          paddingInline={3}
+          alignItems={"center"}
+          justifyContent={"center"}
+        >
+          <Button
+            onClick={() => navigate("/input")}
+            variant="contained"
+            style={{
+              marginRight: 0,
+              marginLeft: 0,
+            }}
+            sx={{
+              bgcolor: "#FF75B6",
+              color: "white",
+              borderRadius: 15,
+              marginTop: 5,
+              mx: 5,
+              flex: 1,
+              maxWidth: 200,
+            }}
+          >
+            試してみる
+          </Button>
+          <Button
+            onClick={() => navigate("/photo-list")}
+            variant="contained"
+            style={{
+              marginRight: 0,
+              marginLeft: 0,
+            }}
+            sx={{
+              bgcolor: "#FF75B6",
+              color: "white",
+              borderRadius: 15,
+              marginTop: 5,
+              mx: 5,
+              flex: 1,
+              whiteSpace: "nowrap",
+              maxWidth: 200,
+            }}
+          >
+            みんなの夢を見る
+          </Button>
+        </Box>
+      </Box>
+    </>
   );
-}
+};
 
 export default Home;

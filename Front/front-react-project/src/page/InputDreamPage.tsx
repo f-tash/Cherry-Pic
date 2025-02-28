@@ -19,6 +19,22 @@ const InputDreamPage: React.FC = () => {
       marginTop={{ xs: 3, md: 8 }}
     >
       <Typography
+        component="h1"
+        fontSize={40}
+        position={"absolute"}
+        top={3}
+        left={"50px"}
+        sx={{
+          textAlign: "center",
+          fontFamily: "Noto Serif JP, serif",
+          fontOpticalSizing: "auto",
+          fontWeight: "normal",
+          fontStyle: "normal",
+        }}
+      >
+        Cherry-Pic
+      </Typography>
+      <Typography
         style={{ color: "red", minHeight: "24px", marginBottom: "8px" }}
       >
         {error ? error : ""}
