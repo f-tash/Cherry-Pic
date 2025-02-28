@@ -6,8 +6,9 @@ import PhotoCard from "../photo-list/PhotoCard.tsx"; // 写真カードのコン
 import PostLinkButton from "../photo-list/PostLinkButton.tsx"; // 投稿ページへのリンクボタンのコンポーネントをインポート
 
 import { PhotoInfo, PhotoDialogProps } from "../photo-list/Photo-list-type"; // 写真情報とダイアログのプロップスの型定義をインポート
-
+import { useNavigate } from "react-router-dom"; // ルーティングのフックをインポート
 const PhotoList: React.FC = () => {
+  const navigate = useNavigate();
   const [photosInfoList, setPhotosInfoList] = useState<PhotoInfo[]>([]); // 写真情報
   const [isDialog, setIsDialog] = useState<boolean>(false); // ダイアログの表示状態
   const isMobile = useMediaQuery("(max-width:850px)");
@@ -82,7 +83,9 @@ const PhotoList: React.FC = () => {
             color: "Black",
             fontSize: { md: "42px" },
             textAlign: "left",
+            cursor: "pointer",
           }}
+          onClick={() => {navigate("/");}}
         >
           Cherry Pic
         </Box>
