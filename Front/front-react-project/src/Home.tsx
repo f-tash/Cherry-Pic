@@ -26,20 +26,22 @@ const Home: React.FC = () => {
           },
         }}
       >
-        <Typography
-          fontSize={40}
+        <Box
+          component="h1"
           position={"absolute"}
-          top={3}
-          left={"50px"}
+          mt={0}
           sx={{
-            fontFamily: "Noto Serif JP, serif",
-            fontOpticalSizing: "auto",
-            fontWeight: "normal",
-            fontStyle: "normal",
+            ml: { xs: 3, md: "50px" },
+            mb: { xs: 0, md: "30px" },
+            fontFamily: "'Pacifico', cursive",
+            textShadow: "2px 2px 4px #ffffff",
+            color: "Black",
+            fontSize: { xs: 0, md: "42px" },
+            textAlign: "left",
           }}
         >
-          Cherry-Pic
-        </Typography>
+          Cherry Pic
+        </Box>
         <Box display={"flex"} flexDirection={"column"} alignItems={"center"}>
           <Box mt={8} component={"img"} src="/Cherry-Pic/cherry-pic.png"></Box>
           <Typography

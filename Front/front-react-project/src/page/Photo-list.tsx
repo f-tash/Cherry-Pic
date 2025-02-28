@@ -75,13 +75,13 @@ const PhotoList: React.FC = () => {
         <Box
           component="h1"
           sx={{
-            ml: isMobile ? "0" : "50px",
-            mb: isMobile ? "0" : "30px",
+            ml: { xs: 2, md: "50px" },
+            mb: { xs: 0, md: "30px" },
             fontFamily: "'Pacifico', cursive",
             textShadow: "2px 2px 4px #ffffff",
             color: "Black",
-            fontSize: "42px",
-            textAlign: isMobile ? "center" : "left",
+            fontSize: { md: "42px" },
+            textAlign: "left",
           }}
         >
           Cherry Pic
