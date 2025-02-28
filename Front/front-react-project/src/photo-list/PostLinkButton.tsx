@@ -1,11 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Button } from "@mui/material";
+import { Button, useMediaQuery } from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
 
 // 投稿ページへのリンクボタン
 const PostLinkButton: React.FC = () => {
   const navigate = useNavigate();
+  const isMobile = useMediaQuery("(max-width:850px)");
   const handleClick = () => {
     navigate("/input");
   };
@@ -17,8 +18,8 @@ const PostLinkButton: React.FC = () => {
         sx={{
           textAlign: "center",
           position: "fixed",
-          bottom: "50px",
-          right: "50px",
+          bottom: isMobile ? "25px" : "50px",
+          right: isMobile ? "25px" : "50px",
           borderRadius: "50%",
           padding: "0", minWidth: "0",
           width: "56px",
