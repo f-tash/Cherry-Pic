@@ -65,7 +65,7 @@ const PhotoList: React.FC = () => {
     return (
         <>
             <Box>
-                <Box component="h1" sx={{ ml: isMobile ? "0" : "50px", mb: isMobile ? "0" : "30px", fontSize: "48px", textAlign: isMobile ? "center" : "left" }}>Cherry Pic</Box>
+                <Box component="h1" sx={{ ml: isMobile ? "0" : "50px", mb: isMobile ? "0" : "30px", fontFamily: "'Pacifico', cursive", textShadow: "2px 2px 4px #ffffff", color: "Black", fontSize: "48px", textAlign: isMobile ? "center" : "left" }}>Cherry Pic</Box>
                 <Container sx={{ mt: "5px" }}>
                     <Grid2 container spacing={3}>
                         {
