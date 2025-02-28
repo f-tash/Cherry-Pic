@@ -17,7 +17,7 @@ const LoadingOverlay: React.FC = () => {
                 style={{
                     width: "4rem",
                     height: "4rem",
-                    border: "4px solid #22c55e", 
+                    border: "4px solid #FF75B6", 
                     borderTopColor: "transparent",
                     borderRadius: "50%",
                     animation: "spin 1s linear infinite",
