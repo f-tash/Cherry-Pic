@@ -160,11 +160,6 @@ const SakuraCardArea = ({ value, setValue }) => {
         {/* 入力フォーム */}
         <InputSakuraCardItem value={value} setValue={setValue} />
       </Box>
-      <img
-        src="./cherry-pic.png"
-        alt="Cherry-Blossum"
-        style={{ width: 180, height: 180 }}
-      />
     </Box>
   );
 };
