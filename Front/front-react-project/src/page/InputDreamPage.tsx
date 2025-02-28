@@ -18,22 +18,21 @@ const InputDreamPage: React.FC = () => {
       flexDirection={"column"}
       marginTop={{ xs: 3, md: 8 }}
     >
-      <Typography
+      <Box
         component="h1"
-        fontSize={40}
         position={"absolute"}
         top={3}
         left={"50px"}
         sx={{
-          textAlign: "center",
-          fontFamily: "Noto Serif JP, serif",
-          fontOpticalSizing: "auto",
-          fontWeight: "normal",
-          fontStyle: "normal",
+          fontFamily: "'Pacifico', cursive",
+          textShadow: "2px 2px 4px #ffffff",
+          color: "Black",
+          fontSize: { xs: 0, md: "42px" },
+          textAlign: "left",
         }}
       >
-        Cherry-Pic
-      </Typography>
+        Cherry Pic
+      </Box>
       <Typography
         style={{ color: "red", minHeight: "24px", marginBottom: "8px" }}
       >
