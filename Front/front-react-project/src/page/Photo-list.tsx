@@ -1,12 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../style.css"; // スタイルシートをインポート
-import {
-  Container,
-  Box,
-  Grid2,
-  useMediaQuery,
-  Typography,
-} from "@mui/material"; // マテリアルUIのコンポーネントをインポート
+import { Container, Box, Grid2, useMediaQuery } from "@mui/material"; // マテリアルUIのコンポーネントをインポート
 
 import PhotDialog from "../photo-list/modal/Photo-dialog.tsx"; // ダイアログのコンポーネントをインポート
 import PhotoCard from "../photo-list/PhotoCard.tsx"; // 写真カードのコンポーネントをインポート
@@ -37,10 +30,16 @@ const PhotoList: React.FC = () => {
 
   // 初回レンダリング時に写真情報を取得
   useEffect(() => {
+    const requestPhotoLimit = isMobile ? 12 : 20;
+
     // APIから写真情報のリストを取得
     const getPhotos = async () => {
       try {
-        const response = await fetch(endpoint, {
+        const params = new URLSearchParams({
+          limit: requestPhotoLimit.toString(),
+        }).toString();
+
+        const response = await fetch(`${endpoint}?${params}`, {
           headers: {
             "ngrok-skip-browser-warning": "true",
           },
@@ -56,7 +55,7 @@ const PhotoList: React.FC = () => {
     };
 
     getPhotos();
-  }, []);
+  }, [isMobile]);
 
   // 詳細情報のダイアログを開く
   const handleOpenDialog = (photoInfo: PhotoInfo) => {
@@ -73,21 +72,20 @@ const PhotoList: React.FC = () => {
   return (
     <>
       <Box>
-        <Typography
+        <Box
           component="h1"
-          fontSize={40}
           sx={{
             ml: isMobile ? "0" : "50px",
             mb: isMobile ? "0" : "30px",
+            fontFamily: "'Pacifico', cursive",
+            textShadow: "2px 2px 4px #ffffff",
+            color: "Black",
+            fontSize: "42px",
             textAlign: isMobile ? "center" : "left",
-            fontFamily: "Noto Serif JP, serif",
-            fontOpticalSizing: "auto",
-            fontWeight: "normal",
-            fontStyle: "normal",
           }}
         >
-          Cherry-Pic
-        </Typography>
+          Cherry Pic
+        </Box>
         <Container sx={{ mt: "5px" }}>
           <Grid2 container spacing={3}>
             {
