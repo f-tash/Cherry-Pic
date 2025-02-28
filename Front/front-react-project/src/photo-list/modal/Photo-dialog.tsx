@@ -62,7 +62,7 @@ const PhotDialog: React.FC<PhotoDialogProps> = (props) => {
                         <div style={{ padding: "0.4em", borderRadius: "5px 0 0 5px", backgroundColor: "#D9D9D9", width: isMobile ? "125px" : "90%" }}>
                             <p style={{ margin: "0", overflow: "hidden", textOverflow: "ellipsis" }}>{props.url}</p>
                         </div>
-                        <ContentCopyOutlinedIcon sx={{ padding: "0.2em", backgroundColor: "#FFB3B3", width: "auto" }} onClick={copyUrl} />
+                        <ContentCopyOutlinedIcon sx={{ padding: "0.2em", backgroundColor: "#FF75B6", color: "white", width: "auto" }} onClick={copyUrl} />
                     </div>
                     <Button onClick={handleClose} disableRipple sx={{
                         borderRadius: "50%", width: "48px", height: "48px", padding: "0", minWidth: "0",
